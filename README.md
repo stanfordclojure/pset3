@@ -48,9 +48,7 @@ There are 77 columns total. For more on what is in the data, check out https://w
 
 `clojure.core.reducers` contains parallel implementations of reduce operations.  The first step is to reduce over several sequences in parallel.  The resulting values are then combined serially to produce the final result.
 
-<p align="center">
 ![Reduce and combine](/img/reduce-combine.png)
-</p>
 
 *(Image by Henry Garner, Clojure Data Science)*
 
