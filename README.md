@@ -79,7 +79,7 @@ For example, a given row might look like this:
 
 Recall Edsger Dijkstra’s classic “dining philosophers problem” - those of you who have taken CS110 will have “fond” memories of this notorious puzzle.
 
-<img src="img/dining_phil.png" alt="Drawing" width="200px" />
+<img src="img/dining_phil.png" alt="Drawing" width="400px" />
 
 
 (image: Wikipedia)
