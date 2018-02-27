@@ -12,7 +12,7 @@
    (Math/sqrt x))
 ```
 
-Map this function over `(repeat 3 20)` and measure the execution time.
+- Map this function over `(repeat 3 20)` and measure the execution time.
 
 - Leverage "parallelism on the cheap" and use `pmap` instead of `map` on the same sequence.  Measure the execution time.
 
@@ -79,7 +79,7 @@ For example, a given row might look like this:
 
 Recall Edsger Dijkstra’s classic “dining philosophers problem” - those of you who have taken CS110 will have “fond” memories of this notorious puzzle.
 
-<img src="img/dining_phil.png" alt="Drawing" style="width: 100px;"/>
+<img src="img/dining_phil.png" alt="Drawing" style="width: 50px;"/>
 
 
 (image: Wikipedia)
