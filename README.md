@@ -48,7 +48,9 @@ There are 77 columns total. For more on what is in the data, check out https://w
 
 `clojure.core.reducers` contains parallel implementations of reduce operations.  The first step is to reduce over several sequences in parallel.  The resulting values are then combined serially to produce the final result.
 
-![alt text](/img/reduce-combine.png)
+<p align="center">
+![Reduce and combine](/img/reduce-combine.png)
+</p>
 
 *(Image by Henry Garner, Clojure Data Science)*
 
@@ -78,9 +80,9 @@ For example, a given row might look like this:
 
 Recall Edsger Dijkstra’s classic “dining philosophers problem” - those of you who have taken CS110 will have “fond” memories of this notorious puzzle.
 
-<center>
-  <img src="img/dining_phil.png" alt="Drawing" width="400px" />
-</center>
+<p align="center">
+  <img src="img/dining_phil.png" alt="Philosophers, dining!" width="400px" />
+</p>
 
 
 (image: Wikipedia)
