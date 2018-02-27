@@ -1,8 +1,8 @@
 # CS43: Functional Programming in Clojure
 
-# Problem Set 3: Parallelism and Concurrency
+## Problem Set 3: Parallelism and Concurrency
 
-## Problem 1 (Parallelism with one letter)
+### Problem 1 (Parallelism with one letter)
 
 - Consider the following function:
 
@@ -18,7 +18,7 @@ Map this function over `(repeat 3 20)` and measure the execution time.
 
 - Use the [Claypoole](https://github.com/TheClimateCorporation/claypoole) library to run this in a thread pool with a thread count equal to the current number of CPUs.  Experiment with different thread counts and observe how the execution time varies.
 
-## Problem 2 (Parallelized data processing)
+### Problem 2 (Parallelized data processing)
 
 - Download the IRS Statistics of Income Dataset (around 100MB) from http://www.irs.gov/pub/irs-soi/12zpallagi.csv.  Place it into the `data` subdirectory, and rename it to `soi.csv`, so that it works with the provided code samples.
 
@@ -72,14 +72,14 @@ For example, a given row might look like this:
 
 #[{:N2 1505430.0, :A19300 181519.0, :MARS4 256900.0 ...}]
 
-- Checkout the excellent [tesser](https://github.com/aphyr/tesser) library, which focuses on providing parallel reduce operators for local and distributed execution.  Using `tesser.math`, compute the correlation and covariance between the `:A02300` and `:A00200` fields in parallel.  Draw conclusions about the relationship between salaries / wages and unemployment compensation.
+- Check out the excellent [tesser](https://github.com/aphyr/tesser) library, which focuses on providing parallel reduce operators for local and distributed execution.  Using `tesser.math`, compute the correlation and covariance between the `:A02300` and `:A00200` fields in parallel.  Draw conclusions about the relationship between salaries / wages and unemployment compensation.
 
 
-## Problem 3 (Dining philosophers)
+### Problem 3 (Dining philosophers)
 
 Recall Edsger Dijkstra’s classic “dining philosophers problem” - those of you who have taken CS110 will have “fond” memories of this notorious puzzle.
 
-![alt text](/img/dining_phil.png)
+<img src="img/dining_phil.png" alt="Philosophers, dining!" style="width: 200px;"/>
 
 (image: Wikipedia)
 
@@ -93,7 +93,7 @@ Eating is not limited by the remaining amounts of spaghetti or stomach space; an
 
 Implement a concurrent simulation of the dining philosophers using Clojure software transactional memory primitives - refs and dosync will be helpful here.  Ensure that no philosopher starves (and that deadlock never occurs).
 
-## References
+*References*
 
 Problem 2 adapted from Clojure Data Science by Henry Garner
 
