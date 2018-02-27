@@ -79,7 +79,8 @@ For example, a given row might look like this:
 
 Recall Edsger Dijkstra’s classic “dining philosophers problem” - those of you who have taken CS110 will have “fond” memories of this notorious puzzle.
 
-<img src="img/dining_phil.png" alt="Philosophers, dining!" style="width: 200px;"/>
+<img src="img/dining_phil.png" alt="Drawing" style="width: 100px;"/>
+
 
 (image: Wikipedia)
 
@@ -91,9 +92,9 @@ Each philosopher must alternately think and eat. However, a philosopher can only
 
 Eating is not limited by the remaining amounts of spaghetti or stomach space; an infinite supply and an infinite demand are assumed.”
 
-Implement a concurrent simulation of the dining philosophers using Clojure software transactional memory primitives - refs and dosync will be helpful here.  Ensure that no philosopher starves (and that deadlock never occurs).
+- Implement a concurrent simulation of the dining philosophers using Clojure software transactional memory primitives - refs and dosync will be helpful here.  Ensure that no philosopher starves (and that deadlock never occurs).
 
-*References*
+**References**
 
 Problem 2 adapted from Clojure Data Science by Henry Garner
 
