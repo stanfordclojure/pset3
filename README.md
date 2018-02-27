@@ -20,7 +20,7 @@ Consider the following function:
 
 - (**1.3**) Use the [`claypoole`](https://github.com/TheClimateCorporation/claypoole) library to run this parallel map in a thread pool with a thread count equal to the current number of CPUs.  Experiment with different thread counts and observe how the execution time varies.
 
-### Problem 2 (Parallelized data processing)
+### Problem 2 (IRS analytics with parallel reducers)
 
 - Download the IRS Statistics of Income Dataset (around 100MB) from http://www.irs.gov/pub/irs-soi/12zpallagi.csv.  Place it into the `data` subdirectory, and rename it to `soi.csv`, so that it works with the provided code samples.
 
@@ -52,7 +52,7 @@ There are 77 columns total. For more on what is in the data, check out https://w
 
 *(Image by Henry Garner, Clojure Data Science)*
 
-- (**2.2**) We can implement a reduce over the sequence to count the lines as follows:
+- (**2.2**) We can implement a reduce over the sequence to count the lines as follows.  Use `r/fold` in `clojure.core.reducers` that counts the number of lines in parallel.
 
 ```clojure
 (->> (io/reader "data/soi.csv")
@@ -60,8 +60,6 @@ There are 77 columns total. For more on what is in the data, check out https://w
        (reduce (fn [i x]
                  (inc i)) 0))
 ```
-
-Use `r/fold` in `clojure.core.reducers` that counts the number of lines in parallel.
 
 - (**2.3**) The builtin Clojure IO utilities must load the entire CSV file into memory before create chunks for parallel processing, which can produce significant overhead.  The Iota library provides optimized data structures for reduction and folding, to improve on this performance.  Further, it can handle files larger than RAM using memory mapping.  Use `iota/seq` to load `data/soi.csv`.
 
@@ -71,12 +69,12 @@ Use `r/fold` in `clojure.core.reducers` that counts the number of lines in paral
 
 For example, a given row might look like this:
 
-#[{:N2 1505430.0, :A19300 181519.0, :MARS4 256900.0 ...}]
+`#[{:N2 1505430.0, :A19300 181519.0, :MARS4 256900.0 ...}]`
 
 - (**2.6**) Check out the excellent [tesser](https://github.com/aphyr/tesser) library, which focuses on providing parallel reduce operators for local and distributed execution.  Using `tesser.math`, compute the correlation and covariance between the `:A02300` and `:A00200` fields in parallel.  Draw conclusions about the relationship between salaries / wages and unemployment compensation.
 
 
-### Problem 3 (Dining philosophers)
+### Problem 3 (Dining philosophers and concurrency)
 
 Recall Edsger Dijkstra’s classic “dining philosophers problem” - those of you who have taken CS110 will have “fond” memories of this notorious puzzle.
 
@@ -95,7 +93,7 @@ Each philosopher must alternately think and eat. However, a philosopher can only
 
 Eating is not limited by the remaining amounts of spaghetti or stomach space; an infinite supply and an infinite demand are assumed.”
 
-- Implement a concurrent simulation of the dining philosophers using Clojure software transactional memory primitives - refs and dosync will be helpful here.  Ensure that no philosopher starves (and that deadlock never occurs).
+- Implement a concurrent simulation of the dining philosophers using Clojure software transactional memory primitives - `ref`s and `dosync` will be helpful here.  Ensure that no philosopher starves (and that deadlock never occurs).
 
 **References**
 
