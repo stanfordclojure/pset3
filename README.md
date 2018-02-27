@@ -93,7 +93,7 @@ Each philosopher must alternately think and eat. However, a philosopher can only
 
 Eating is not limited by the remaining amounts of spaghetti or stomach space; an infinite supply and an infinite demand are assumed.”
 
-- Implement a concurrent simulation of the dining philosophers using Clojure software transactional memory primitives - `ref`s and `dosync` will be helpful here.  Ensure that no philosopher starves (and that deadlock never occurs).
+- (**3.1**) Implement a concurrent simulation of the dining philosophers using Clojure software transactional memory primitives - `ref`s and `dosync` will be helpful here.  Ensure that no philosopher starves (and that deadlock never occurs).
 
 **References**
 
