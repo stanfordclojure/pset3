@@ -4,7 +4,7 @@
 
 ### Problem 1 (Parallelism with one letter)
 
-- Consider the following function:
+Consider the following function:
 
 ```clojure
 (defn sleepy-sqrt [x]
@@ -79,7 +79,7 @@ For example, a given row might look like this:
 
 Recall Edsger Dijkstra’s classic “dining philosophers problem” - those of you who have taken CS110 will have “fond” memories of this notorious puzzle.
 
-<img src="img/dining_phil.png" alt="Drawing" style="width: 50px;"/>
+<img src="img/dining_phil.png" alt="Drawing" style="height: 100px"/>
 
 
 (image: Wikipedia)
