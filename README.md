@@ -175,16 +175,17 @@ argument signature `[error & args]`.
 For example, `fs.readFile` is used:
 
 ```javascript
-fs.readFile('/etc/passwd', (err, data) => {
+fs.readFile('/etc/passwd', function (err, data) {
   if (err) throw err;
   console.log(data);
 });
 ```
 
 
-Write a function that wraps async operations like `fs.readFile` with the Node.js
-`[error & args]` callback style to take go blocks that yield the arguments when
-ready. For example, the above code would be re-written
+Write a function `run-task` that wraps async operations like `fs.readFile` with
+the Node.js `[error & args]` callback style which returns a channel that yields
+the `error` if the callback failed, or `args` if it succeeded. For example, the
+above code would be re-written
 
 
 ```clojure
@@ -196,7 +197,12 @@ ready. For example, the above code would be re-written
         (throw e))))
 ```
 
-The `result-chan` should be closed after it is read from.
+In the above example, `run-task` takes the async method, and all the arguments
+except the callback function, and returns a channel.
+
+If the read file operation succeeded, it will print the contents of
+`/etc/passwd`, otherwise it will throw an error. The `result-chan` should be
+closed after it is read from.
 
 
 #### Part 2
@@ -208,22 +214,25 @@ Can we isolate the inherent complexity of dealing with async parts of the code
 from synchronous parts of the code, in the spirit of Timothy Baldridge's
 [Core.Async in Use Talk][async-in-use]?
 
-You can't do it perfectly, but you can make it an even more pleasant experience.
+You can't do it perfectly, but you can still improve the experience.
 
 Write a function `execute`, that takes a context map and any number of
-functions, and threads the context through each of the functions, while
-respecting asynchronicity. In other words, instead of implementing
+functions, and threads the context through each of the functions, *while
+respecting asynchronicity*. In other words, instead of implementing
 
 ```clojure
 (defn execute [context f1 f2 f3]
   (-> context f1 f2 f3))
 ```
 
-which threads the context through the input functions, but assuming each
-function is synchronous, your `execute` must allow the functions to be either
-synchronous or asynchronous, return a channel that conveys the final result, and
-take any number of functions rather than just 3.
+which threads the context through the input functions, but assumes each
+functions is synchronous, your `execute` must allow the functions
+1. to be either synchronous or asynchronous,
+2. return a channel that conveys the final result, and
+3. take any number of functions rather than just 3.
 
+Note that the above implementation would *not* work if any of `f1`, `f2`, `f3`
+were asynchronous, since asynchronous methods immediately return `nil`.
 
 
 **References**
